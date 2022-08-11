@@ -13,6 +13,7 @@ public class BulletsPool : GenericPool<Bullet>
         for (int i = 0; i < _startObjectCount; i++)
         {
             var bullet = Instantiate(_prefab, _holdPosition, Quaternion.identity);
+            bullet.transform.parent = transform;
             bullet.gameObject.SetActive(false);
             pool.Enqueue(bullet);
         }
@@ -30,6 +31,7 @@ public class BulletsPool : GenericPool<Bullet>
         {
             currentObjectCount++;
             var bullet = Instantiate(_prefab, spawnPos, Quaternion.identity);
+            bullet.transform.parent = transform;
             return bullet;
         }
         else
